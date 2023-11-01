@@ -31,7 +31,8 @@
         <!--<meta http-equiv="Refresh" content="0; url=http://www.yahoo.co.jp/">-->
     </head>
     <body>
-        ●本文<br>
+        <br>
+        ●本文<br><br>
         <spen style="font-size:25pt"><u>1.HTMLの基本</u></spen><br><br>
         ●アンパサンド(&amp;)：&amp;amp;<br>
         ●右大不等号(&lt;)：&amp;lt;<br>
@@ -206,9 +207,75 @@
         ●Exel も場合：<br>
         <a href="sample.xls">サンプルブック</a><br>
         ●閉じるリンクをつける<br>
-        <a href="#" onclick="window.close()">[閉じる]</a>　　注：ページを閉じます<br>
+        <a href="#" onclick="window.close()">[閉じる]</a>　　注：ページを閉じます<br><br>
+        <span style="font-size:25pt"><u>7.クリッカブルマップ</u></span><br><br>
+        ●簡易クリッカブルマップ<br>
+        リンク付きの画像を横に並べる<br>
+        <div style="white-space:nowrap">
+            <a href="aa.htm"><img src="aa.gif" border=0 alt="AA"></a>
+            <a href="bb.htm"><img src="bb.gif" border=0 alt="BB"></a>
+            <a href="cc.htm"><img src="cc.gif" border=0 alt="CC"></a>
+        </div>
+        ●サーバサイドクリッカブルマップ<br>
+        地図など<br>
+        <a href="smap.cgi"><img src="smap.gif" border=0 ismap></a><br>
+        ●クライアントサイドクリッカブルマップ<br>
+        最もポピュラー<br>
+        &lt;map&gt;を用いて：<br>
+        <img src="map.gif" alt="画像" usemap="#map1" border=0 width=243 height=68>
+        <map name="map1">
+            <area shape="rect" coords="11,16,63,54" alt="Page1" href="page1.htm">
+            <area shape="poly" coords="73,50,159,50,159,24,73,9" alt="Page2" href="page2.htm">
+            <area shape="circle" coords="197,32,28" alt="Page3" href="page3.htm">
+            <area shape="default" alt="Other" href="default.htm">
+        </map><br>
+        <span style="font-size:25pt"><u>8.リスト</u></span><br><br>
+        ●&lt;ul&gt;を用いて（順序なしリスト）：
+        <ul>
+            <li>カレーライス
+            <li>スパゲッティ
+        </ul>
+        ●&lt;ol&gt;を用いて（順序リスト）：
+        <ol>
+            <li>カレーライス
+            <li>スパゲッティ
+        </ol>
+        ●スタイルシート&lt;list-style-type&gt;を用いて：<br>
+        ●type&lt;lower-alpha&gt;：
+        <ol style="list-style-type:lower-alpha">
+            <li>おでん
+            <li>うどん
+        </ol>
+        ●type&lt;circle&gt;：
+        <ol style="list-style-type:circle">
+            <li>おでん
+            <li>うどん
+        </ol>
+        ●定義リスト&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;：
+        <dl>
+            <dt>HTML</dt>
+            <dd>HTMLとは・・・</dd>
+            <dt>CSS</dt>
+            <dd>CSSとは・・・</dd>
+        </dl>
+        注：&lt;/dt&gt;&lt;/dd&gt;のタグは省略可<r><br><br>
+        <span style="font-size:25pt"><u>9.線</u></span><br><br>
+        ●&lt;hr&gt;、スタイルシート&lt;width&gt;&lt;height&gt;&lt;margin&gt;&lt;background-color&gt;を用いて：<br>
+        <hr>
+        <hr style="width:300px">
+        <hr style="width:300px; margin-left:0">
+        <hr style="width:300px; margin-right:0">
+        <hr style="height:5px; background-color:#66f">
+        <hr style="height:5px; background-color:#66f; border:0">
+        ●縦線：<br>
+        <div style="background-color:gray; width:2px; height:40px;"></div>
+        ●枠線で囲む：<br>
+        スタイルシート&lt;border&gt;
+        <div style="border:1px solid gray; padding:5px;">
+            あああああ
+        </div>
         <br>
-        作業途中：リンクまで<br>
+        作業途中：線まで<br>
         続き-> <a href="https://www.tohoho-web.com/how2/index.htm">とほほのWWW入門/逆引きリファレンス</a><br>
     </body>
 </html>
