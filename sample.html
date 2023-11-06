@@ -9,6 +9,26 @@
             }
         </style>
         <style>
+            .center { text-align: center; }
+            .table-border { border-collapse: collapse; }
+            .table-border td { border: 1px solid #333; }
+            .center { text-align: center; }
+            .center * { margin-left: auto; margin-right: auto; }
+            .multicol::after {
+                content: "";
+                clear: both;
+                display: block;
+            }
+            .multicol .mcol {
+                float: left;
+                margin-left: 8px;
+                width: 100px;
+                padding: 2px;
+                border: 1px solid gray;
+            }
+            .vertical { writing-mode: vertical-rl; }
+        </style>
+        <style>
             body, th, td { line-height: 150%; }
         </style>
         <style>
@@ -34,7 +54,7 @@
         <!--<meta http-equiv="Refresh" content="0; url=http://www.yahoo.co.jp/">-->
     </head>
     <body>
-        <div class=i>
+        <div class="i">
         <br>
         ●本文<br><br>
         <h4 id="mokuji"></h4>
@@ -55,7 +75,12 @@
             <li><a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#action">アクション</a>
             <li><a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#music">音・音楽</a>
             <li><a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#table">テーブル</a>
-        </ol><br>
+            <li><a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#layout">レイアウト</a>
+            <li><a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#sikaku">視覚効果</a>
+        </ol>
+        <ul>
+            <li><a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#tuzuki">続き</a>
+        </ul>
         <h4 id="HTMLnokihon"></h4><br>
         <spen style="font-size:25pt"><u><strong>1.HTMLの基本</strong></u></spen>　<a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#mokuji">[目次]</a><br><br>
         ●アンパサンド(&amp;)：&amp;amp;<br>
@@ -166,7 +191,10 @@
         &lt;body&gt;に background-color を指定
         <style>
             body {
-                background-color: #ffc;
+                background-color:rgb(227, 227, 189);
+            }
+            div {
+                background-color:#ffc;
             }
             u {
                 background-color: rgb(255, 204, 242)
@@ -486,13 +514,13 @@
             <tr><td>Chrome</td><td>Google</td></tr>
             <tr><td>Firefox</td><td>Mozilla</td></tr>
             <tr><td>Safari</td><td>Apple</td></tr>
-        </table>
+        </table><br>
         ●特定のテーブルにスタイルを適用する：<br>
         style属性を用いる<br>
-        <table style="border-collapse:collapse;">
-            <tr><th style="border:1px solid gray;">...</th></tr>
-            <tr><td style="border:1px solid gray;">...</td></tr>
-        </table><br>
+        &lt;table style="border-collapse:collapse;"&gt;<br>
+            &lt;tr&gt;&lt;th style="border:1px solid gray;"&gt;...&lt;/th&gt;&lt;/tr&gt;<br>
+            &lt;tr&gt;&lt;td style="border:1px solid gray;"&gt;...&lt;/td&gt;&lt;/tr&gt;<br>
+        &lt;/table&gt;&lt;br&gt;<br>
         ●全てのテーブルにスタイルを適用する：<br>
         table, th, td 要素にスタイルを追加<br>
         <span style="font-family:Lucida Console"><br>
@@ -501,10 +529,177 @@
             th, td { border: 1px solid gray; }<br>
         &lt;/style&gt;<br>
         </span><br>
+        ●特定のクラスを適用したテーブルにスタイルを適用する；<br>
+        class=mytblを指定<br>
+        <span style="font-family:Lucida Console"><br>
+        &lt;style&gt;<br>
+            .mytbl { border-collapse: collapse; }<br>
+            .mytbl th, .mytbl td { border: 1px solid gray; }<br>
+        &lt;/style&gt;<br>
+        &lt;table class="mytbl"&gt;<br>
+            :<br>
+         &lt;/table&gt;<br>
+        </span><br>
+        ●特定のテーブルにのみ適用：<br>
+        id属性を用いる：<br>
+        <span style="font-family:Lucida Console"><br>
+        &lt;style&gt;<br>
+            table#tbl1 { border-collapse: collapse; }<br>
+            #tbl1 th, #tbl1 td { border: 1px solid gray; }<br>
+        &lt;/style&gt;<br>
+        &lt;table id="tbl1"&gt;<br>
+            :<br>
+        &lt;/table&gt;<br>
+        </span><br>
+        ●テーブルのn番目にスタイルを適用：<br>
+        nth-child(n)を用いる：<br>
+        <span style="font-family:Lucida Console"><br>
+        &lt;style&gt;<br>
+            table { width: 300px; border-collapse: collapse; }<br>
+            th, td { border: 1px solid gray; }<br>
+            th { background-color: #ccf; }<br>
+            td:nth-child(1) { background-color: #fcc; }<br>
+            td:nth-child(2) { background-color: #cfc; }<br>
+        &lt;/style&gt;<br>
+        &lt;table&gt;<br>
+            &lt;tr&gt;&lt;th&gt;AAA&lt;/th&gt;&lt;th&gt;BBB&lt;/th&gt;&lt;/tr&gt;<br>
+            &lt;tr&gt;&lt;td&gt;A1&lt;/td&gt;&lt;td&gt;B1&lt;/td&gt;&lt;/tr&gt;<br>
+            &lt;tr&gt;&lt;td&gt;A2&lt;/td&gt;&lt;td&gt;B2&lt;/td&gt;&lt;/tr&gt;<br>
+            &lt;tr&gt;&lt;td&gt;A3&lt;/td&gt;&lt;td&gt;B3&lt;/td&gt;&lt;/tr&gt;<br>
+        &lt;/table&gt;<br>
+        </span><br>
+        ●テーブルの中身を改行させない：<br>
+        white-space: nowarpを用いる<br>
+        ●カラム(セル)を連結(結合)する：<br>
+        &lt;td&gt;や&lt;th&gt;にcolspan=nやrowspan=n属性を指定<br>
+        <table border=1>
+            <tr><td colspan=2>横連結</td></tr>
+            <tr><td rowspan=2>縦連結</td><td>○○</td></tr>
+            <tr><td>△△</td></tr>
+        </table><br>
+        ●テーブルの幅や高さを指定：<br>
+        &lt;table&gt;、&lt;tr&gt;、&lt;th&gt;、&lt;td&gt;に、スタイルシートのwidthやheightを指定<br>
+        <table style="width:200px; height:100px;">
+            <tr><td>東京都</td><td>13,742,906</td></tr>
+            <tr><td>広島県</td><td>2,830,069</td></tr>
+        </table><br>
+        ●カラムの内容を左寄せ、右寄せする：<br>
+        &lt;tr&gt;、&lt;th&gt;、&lt;td&gt;にスタイルシートのtext-alignを指定<br>
+        <style>
+            #tb3 { border-collapse: collapse; width: 200px; }
+            #tb3 th, #tb3 td { border: 1px solid gray; }
+            #tb3 td:nth-child(2) { text-align:right; }
+        </style>
+        <table id="tb3">
+            <tr><td>東京都</td><td>13,742,906</td></tr>
+            <tr><td>広島県</td><td>2,830,069</td></tr>
+        </table><br>
+        ●カラムの内容を上寄せ、下寄せする：<br>
+        &lt;tr&gt;、&lt;th&gt;、&lt;td&gt;にスタイルシートのvertical-alignを指定<br>
+        <style>
+            #tb4 { border-collapse: collapse; width: 150px; height: 50px; }
+            #tb4 th, #tb4 td { border: 1px solid gray; }
+            #tb4 td:nth-child(1) { vertical-align: top; }
+            #tb4 td:nth-child(2) { vertical-align: bottom; }
+        </style>
+        <table id="tb4">
+            <tr><td>上寄せ</td><td>下寄せ</td></tr>
+        </table><br>
+        ●テーブルの背景色を指定：<br>
+        &lt;table&gt;、&lt;tr&gt;、&lt;th&gt;、&lt;td&gt;にスタイルシートのbackground-colorを用いて：<br>
+        <style>
+            #tb5 { border-collapse: collapse; width: 200px; }
+            #tb5 th, #tb5 td { border: 1px solid gray; }
+            #tb5 th { background-color: #cfc; }
+            #tb5 td { background-color: #ffc; }
+        </style>
+        <table id="tb5">
+            <tr><th>東京都</th><td>13,742,906</td></tr>
+            <tr><th>広島県</th><td>2,830,069</td></tr>
+        </table><br>
+        ●テーブルの背景画像を指定：<br>
+        &lt;table&gt;、&lt;tr&gt;、&lt;th&gt;、&lt;td&gt;にスタイルシートのbackground-imageを用いて<br>
+        <style>
+            #tb6 { border-collapse: collapse; width: 200px; }
+            #tb6 th, #tb6 td { border: 1px solid gray; }
+            #tb6 th { background-image: url(https://www.tohoho-web.com/image/ki2.gif); }
+        </style>
+        <table id="tb5">
+            <tr><th>東京都</th><td>13,742,906</td></tr>
+            <tr><th>広島県</th><td>2,830,069</td></tr>
+        </table><br>
+        ●テーブルを横に二つ並べる：<br>
+        外側にもうひとつ大きなテーブルを設ける：<br>
+        <table>
+            <tr>
+             <td>
+              <table border=1>
+               <tr><td>ああ</td><td>ああ</td></tr>
+               <tr><td>ああ</td><td>ああ</td></tr>
+              </table>
+             </td>
+             <td>
+              <table border=1>
+               <tr><td>ああ</td><td>ああ</td></tr>
+               <tr><td>ああ</td><td>ああ</td></tr>
+              </table>
+             </td>
+            </tr>
+        </table><br>
+        スタイルシートのfloatを用いる：<br>
+        <table border=1 style="float:left; margin-right:.5em;">
+            <tr><td>ああ</td><td>ああ</td></tr>
+            <tr><td>ああ</td><td>ああ</td></tr>
+        </table>
+        <table border=1>
+            <tr><td>ああ</td><td>ああ</td></tr>
+            <tr><td>ああ</td><td>ああ</td></tr>
+        </table><br>
+        ●<a href="https://www.tohoho-web.com/tech/round-table.html">角の丸いテーブルを表示する</a><br>
+        <h4 id="layout"></h4><br>
+        <span style="font-size:25pt"><u><strong>16.レイアウト</strong></u></span>　<a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#mokuji">[目次]</a><br><br>
+        ●中央に表示（センタリング）：<br>
+        スタイルシートtext-alignを用いて：<br>
+        <div class="center">
+            テキスト
+        </div><br>
+        テーブルなど：margin-rightとmargin-leftにautoを指定<br>
+        <div class="center">
+            <table class="table-border">
+            <tr><td>東京都</td><td>13,742,906</td></tr>
+            <tr><td>広島県</td><td>2,830,069</td></tr>
+            </table>
+        </div><br>
+        ●<a href="https://www.tohoho-web.com/ex/centering.html">センタリング(中央揃え・中央寄せ)</a><br>
+        ●floatにleftを指定：<br>
+        <div class="multicol">
+            <div class="mcol">
+              いろはにほへとちりぬるを
+            </div>
+            <div class="mcol">
+              わかよたれそつねんらむ
+            </div>
+            <div class="mcol">
+              うゐのおくやまけふこえて
+            </div>
+        </div><br>
+        ●文章を縦書きにする：<br>
+        スタイルシートwriting-modeを用いる<br>
+        <div class="vertical" style="width:120px; height:80px; border:1px solid gray; padding:2px;">
+            いるはにほへとちりぬるをわかよたれそつねならむうゐのおくやまけふこえて
+        </div><br>
+        ●画像や文字を好きな位置に表示する：<br>
+        スタイルシートpositionを用いる<br>
+        <div style="position:absolute; top:10000px; left:200px;">
+            Hello!!
+        </div><br>
+        <h4 id="sikaku"></h4><br>
+        <span style="font-size:25pt"><u><strong>17.視覚効果</strong></u></span>　<a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#mokuji">[目次]</a><br><br>
 
         <br>
-        作業途中：テーブルから<br>
-        続き-> <a href="https://www.tohoho-web.com/how2/index.htm">とほほのWWW入門/逆引きリファレンス</a><br>
+        <h4 id="tuzuki"><h4><br>
+        作業途中：視覚効果から<br> 
+        続き-> <a href="https://www.tohoho-web.com/how2/index.htm">とほほのWWW入門/逆引きリファレンス</a>　<a href="file://wsl.localhost/Ubuntu/home/yamada/py/s2201115/sample.html#mokuji">[目次]</a><br><br>
     </div>
     </body>
 </html>
